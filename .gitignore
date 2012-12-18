@@ -1,0 +1,14 @@
+.bundle
+Gemfile.lock
+db/*.sqlite3
+log/*.log
+tmp/**/*
+tmp/*
+public/system/*
+public/uploads/*
+.DS_Store
+*/.DS_Store
+docs/*
+npm-debug.log
+Procfile
+.rbenv-version
