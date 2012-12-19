@@ -13,7 +13,7 @@ class CreateAds < ActiveRecord::Migration
       # t.string :distance
 
       t.boolean :highway, :default => false
-      t.string :itinerary
+      t.string  :itinerary
 
       t.timestamps
     end
