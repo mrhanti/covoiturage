@@ -3,6 +3,8 @@ class CreateConfirmations < ActiveRecord::Migration
     create_table :confirmations do |t|
       t.string  :token
       t.integer :use_count, :default => 0
+
+      t.references :ad
       t.timestamps
     end
   end

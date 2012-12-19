@@ -1,4 +1,5 @@
 Covoiturage::Application.routes.draw do
+  
   resources :users, :only => [:new, :create] do
     resources :ads, :only => [:index, :new, :create]
   end

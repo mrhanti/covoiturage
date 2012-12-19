@@ -1,2 +1,41 @@
-%h1 Ads#new
-%p Find me in app/views/ads/new.html.haml
+%h2= "Nouvelle annonce"
+
+%h1= "#{@user.first_name} #{@user.last_name}"
+
+= form_for [@user, @ad] do |f| 
+
+  .input-group
+    = f.label :destination
+    = f.text_field :destination
+  
+  .input-group
+    = f.label :depature
+    = f.text_field :departure
+
+  .input-group
+    = f.label :departure_on
+    = f.text_field :departure_on
+
+  .input-group
+    = f.label :departure_at
+    = f.text_field :departure_at
+  
+  .input-group
+    = f.label :seat_limit
+    = f.number_field :seat_limit, :value => 1, :in => 1...10
+
+  .input-group
+    = f.label :price_per_seat, "Prix en DH"
+    = f.number_field :price_per_seat, :value => 1, :in => 1...1000
+
+  .input-group
+    = f.check_box :highway
+    = f.label :highway, "Autoroute?"
+
+  .input-group
+    = f.label :itinerary
+    = f.text_field :itinerary
+
+
+  %div
+    = f.submit "Create ad"

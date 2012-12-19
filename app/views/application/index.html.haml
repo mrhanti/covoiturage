@@ -1,0 +1,17 @@
+%h1
+  Bienvenue sur covoiturage.ma
+
+= search_form_for @q, :url => search_path, :html => { :method => :post } do |f|
+  = f.label :departure_cont 
+  = f.text_field :departure_cont
+
+  = f.label :destination_cont
+  = f.text_field :destination_cont
+
+  = f.label :destination_on_cont
+  = f.text_field :destination_on_cont
+
+  = f.label :destination_at_cont
+  = f.text_field :destination_at_cont
+
+  = f.submit "Search"

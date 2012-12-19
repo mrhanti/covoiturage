@@ -1,2 +1,24 @@
-%h1 Ads#create
-%p Find me in app/views/ads/create.html.haml
+= debug @ad
+/ - unless @ad.errors.empty?
+/   - @ad.errors.each do |e|
+/     = "#{e.message}"
+
+= link_to "Nouvelle annonce", new_ad_path
+%div
+  %ul
+    %li
+      - @user.ads.each do |ad|
+        %h3= "De: #{ad.destination}"
+        %h3= "Vers: #{ad.departure}"
+        %h5= "Le: #{ad.departure_on}"
+        %h5= "A: #{ad.departure_at}"
+
+        %a{:href => "#"}
+          Modifier
+        %span= "|"
+        %a{:href => "#"}
+          Voir
+
+        %div
+          %h1
+            = ad.confirmation.token

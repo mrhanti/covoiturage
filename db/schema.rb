@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20121218234457) do
     t.float    "price_per_seat"
     t.boolean  "highway",        :default => false
     t.string   "itinerary"
+    t.integer  "user_id"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
   end
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20121218234457) do
   create_table "confirmations", :force => true do |t|
     t.string   "token"
     t.integer  "use_count",  :default => 0
+    t.integer  "ad_id"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end

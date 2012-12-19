@@ -1,2 +1,35 @@
-%h1 Users#new
-%p Find me in app/views/users/new.html.haml
+%h1
+  Subscription
+
+= form_for @user do |f| 
+
+  .input-group
+    = f.label :first_name
+    = f.text_field :first_name
+  
+  .input-group
+    = f.label :last_name
+    = f.text_field :last_name
+
+  .input-group
+    = f.label :email
+    = f.email_field :email
+  
+  .input-group
+    = f.label :phone_number
+    = f.phone_field :phone_number
+  
+  .input-group
+    = f.label :year_of_birth
+    = f.number_field :year_of_birth, :value => 1940, :in => 1940...2000
+
+  .input-group
+    = radio_button :user, :gender, :male, :checked => true
+    = f.label :male
+
+  .input-group
+    = radio_button :user, :gender, :female
+    = f.label :female
+  
+  %div
+    = f.submit "Sign up"
