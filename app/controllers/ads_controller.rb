@@ -24,4 +24,9 @@ class AdsController < ApplicationController
 
     redirect_to :action => :index
   end
+
+  def search
+    @q = Ad.search(params[:q])
+    @ads = @q.result()
+  end
 end

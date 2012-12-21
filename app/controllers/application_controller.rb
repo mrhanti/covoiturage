@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
 
   def index
   	@q = Ad.search(params[:q])
-  	@ads = @q.result(:distinct => true)
+  	# @ads = @q.result(:distinct => true)
   end
 end
