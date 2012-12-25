@@ -2,16 +2,45 @@
   Bienvenue sur covoiturage.ma
 
 = search_form_for @q, :url => search_path, :html => { :method => :post } do |f|
-  = f.label :departure_cont 
-  = f.text_field :departure_cont
+  %h4
+    Recherche Directe
 
-  = f.label :destination_cont
-  = f.text_field :destination_cont
+  .input-group
+    = f.label :departure_eq 
+    = f.text_field :departure_eq 
 
-  = f.label :departure_on_cont
-  = f.text_field :departure_on_cont
+  .input-group
+    = f.label :destination_eq 
+    = f.text_field :destination_eq 
 
-  = f.label :departure_at_cont
-  = f.text_field :departure_at_cont
+  .input-group
+    = f.label :departure_on_eq 
+    = f.text_field :departure_on_eq 
+
+  .input-group
+    = f.label :departure_at_eq 
+    = f.text_field :departure_at_eq 
+
+  = f.submit "Search"
+
+= search_form_for @q, :url => search_path, :html => { :method => :post } do |f|
+  %h4
+    Rechercher en Marge
+
+  .input-group
+    = f.label :departure_eq 
+    = f.text_field :departure_eq 
+
+  .input-group
+    = f.label :destination_eq 
+    = f.text_field :destination_eq 
+
+  .input-group
+    = f.label :departure_on_gt 
+    = f.text_field :departure_on_gt 
+
+  .input-group
+    = f.label :departure_on_lt 
+    = f.text_field :departure_on_lt 
 
   = f.submit "Search"

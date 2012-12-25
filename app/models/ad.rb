@@ -10,4 +10,8 @@ class Ad < ActiveRecord::Base
   def generate_confirmation_code
     self.confirmation = Confirmation.create
   end
+
+  def dd
+  	"#{departure} -> #{destination} on #{departure_on} at #{departure_at}"
+  end
 end

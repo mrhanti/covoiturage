@@ -14,11 +14,11 @@
 
   .input-group
     = f.label :departure_on
-    = f.text_field :departure_on
+    = date_select :ad, :departure_on
 
   .input-group
     = f.label :departure_at
-    = f.text_field :departure_at
+    = time_select :ad, :departure_at
   
   .input-group
     = f.label :seat_limit

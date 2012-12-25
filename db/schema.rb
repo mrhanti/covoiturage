@@ -14,14 +14,14 @@
 ActiveRecord::Schema.define(:version => 20121218234457) do
 
   create_table "ads", :force => true do |t|
-    t.string   "destination"
-    t.string   "departure"
-    t.string   "departure_on"
-    t.string   "departure_at"
-    t.integer  "seat_limit"
-    t.float    "price_per_seat"
+    t.string   "destination",                       :null => false
+    t.string   "departure",                         :null => false
+    t.date     "departure_on",                      :null => false
+    t.time     "departure_at",                      :null => false
+    t.integer  "seat_limit",                        :null => false
+    t.float    "price_per_seat",                    :null => false
     t.boolean  "highway",        :default => false
-    t.string   "itinerary"
+    t.text     "itinerary"
     t.integer  "user_id"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(:version => 20121218234457) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "phone_number"
-    t.string   "year_of_birth"
+    t.string   "first_name",                       :null => false
+    t.string   "last_name",                        :null => false
+    t.string   "email",                            :null => false
+    t.string   "phone_number",                     :null => false
+    t.integer  "year_of_birth",                    :null => false
     t.string   "gender"
     t.boolean  "admin",         :default => false
     t.datetime "created_at",                       :null => false
