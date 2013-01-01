@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :ads, :dependent => :destroy 
 
+  mount_uploader :avatar, AvatarUploader
+
   validates :email, :presence => true 
   
   def full_name
