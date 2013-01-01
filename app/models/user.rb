@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :ads, :dependent => :destroy 
 
-  validates :email, :presence => true
+  validates :email, :presence => true 
   
   def full_name
     "#{self.first_name} #{self.last_name}"
