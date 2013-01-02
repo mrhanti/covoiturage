@@ -1,0 +1,46 @@
+%h1="Edit #{@user.full_name} profile"
+
+= form_for @user, :html => { :multipart => true } do |f| 
+
+  .input-group
+    = f.label :first_name
+    = f.text_field :first_name
+  
+  .input-group
+    = f.label :last_name
+    = f.text_field :last_name
+
+  .input-group
+    = f.label :email
+    = f.email_field :email
+  
+  .input-group
+    = f.label :phone_number
+    = f.phone_field :phone_number
+  
+  .avatar
+    - if @user.avatar?
+      %img{:src=>"#{@user.avatar.thumb.url}", :alt=>""}
+  
+      .remove-avatart
+        = f.check_box :remove_avatar
+        Remove avatar
+
+  .input-group
+    = f.label :avatar
+    = f.file_field :avatar
+
+  .input-group
+    = f.label :year_of_birth
+    = f.number_field :year_of_birth, :in => 1940...2000
+
+  .input-group
+    = radio_button :user, :gender, :male, :checked => true
+    = f.label :male
+
+  .input-group
+    = radio_button :user, :gender, :female
+    = f.label :female
+  
+  %div
+    = f.submit "Update"
