@@ -1,6 +1,3 @@
-# encoding: utf-8
-require "digest/sha-1"
-
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
@@ -11,7 +8,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "system/#{model.email}"
+    encrypted_email = Digest::SHA1.hexdigest "#{model.email}"
+    "system/#{encrypted_email}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -31,7 +29,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :scale => [50, 50]
+    process :resize_to_fill => [80,80]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
