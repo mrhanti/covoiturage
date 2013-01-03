@@ -19,10 +19,10 @@
     = f.phone_field :phone_number
   
   .avatar
-    - if @user.avatar?
+    - if @user.has_avatar?
       %img{:src=>"#{@user.avatar.thumb.url}", :alt=>""}
   
-      .remove-avatart
+      .remove-avatar
         = f.check_box :remove_avatar
         Remove avatar
 

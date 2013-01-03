@@ -9,7 +9,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     encrypted_email = Digest::SHA1.hexdigest "#{model.email}"
-    "system/#{encrypted_email}"
+    ["system", encrypted_email].compact.join("/")
+  end
+
+  def default_url
+    ["assets", "default_avatar.png"].compact.join("/")
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

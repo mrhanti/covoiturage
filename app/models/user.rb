@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   def full_name
     "#{self.first_name} #{self.last_name}"
   end
+
+  def has_avatar?
+  	self.avatar.to_s.match(/assets\/default_avatar\.png/).nil?
+  end
 end
