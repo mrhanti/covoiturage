@@ -1,3 +1,5 @@
+= link_to "Nouvelle annonce", new_user_ad_path(@user)
+
 %h1="Edit #{@user.full_name} profile"
 
 = form_for @user, :html => { :multipart => true } do |f| 
@@ -44,3 +46,37 @@
   
   %div
     = f.submit "Update"
+
+%h1
+  Liste des annonces
+
+%table.table
+  %thead
+    %th="Destination"
+    %th="Departure"
+    %th="Departure on"
+    %th="Departure at"
+    %th="Seat limit"
+    %th="Price per seat"
+    %th="Highway"
+    %th="Actions"
+  - @user.ads.each do |a| 
+    %tbody
+      %td
+        = a.destination
+      %td
+        = a.departure
+      %td
+        = a.departure_on
+      %td
+        = a.departure_at
+      %td
+        = a.seat_limit
+      %td
+        = a.price_per_seat
+      %td
+        = a.highway
+      %td
+        = link_to "show", user_ad_path(@user, a)
+        %a{:href=>"#{user_ad_path(@user, a)}", :'data-confirm'=>"Are you sure?", :'data-method'=>"delete", :rel=>"nofollow"}
+          destroy

@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   validates :email, :presence => true 
   
   def full_name
-    "#{self.first_name} #{self.last_name}"
+    return nil unless self.first_name && self.last_name
+    [self.first_name, self.last_name].join(' ')
   end
 
   def has_avatar?
