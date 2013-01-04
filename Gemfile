@@ -7,7 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'mysql2'
 gem 'ransack'
-
+gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 

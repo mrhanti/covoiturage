@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130101155630) do
+ActiveRecord::Schema.define(:version => 20130103211919) do
 
   create_table "ads", :force => true do |t|
     t.string   "destination",                       :null => false
@@ -36,16 +36,30 @@ ActiveRecord::Schema.define(:version => 20130101155630) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "first_name",                       :null => false
-    t.string   "last_name",                        :null => false
-    t.string   "email",                            :null => false
-    t.string   "phone_number",                     :null => false
-    t.integer  "year_of_birth",                    :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email",                                     :null => false
+    t.string   "phone_number"
+    t.integer  "year_of_birth"
     t.string   "gender"
-    t.boolean  "admin",         :default => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.boolean  "admin",                  :default => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "avatar"
+    t.string   "encrypted_password"
+    t.string   "password_salt"
+    t.string   "confirmation_token"
+    t.time     "confirmed_at"
+    t.time     "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "reset_password_token"
+    t.time     "reset_password_sent_at"
+    t.time     "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.time     "current_sign_in_at"
+    t.time     "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
 end

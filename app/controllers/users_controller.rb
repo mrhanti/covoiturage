@@ -1,16 +1,8 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
+  before_filter :authenticate_user!, :only => [:profile]
 
-  def create
-    @user = User.new(params[:user])
-  
-    if @user.save
-      flash[:notice] = "user created successfully"
-    else
-      flash[:notice] = "user not created successfully"
-    end
+  def profile
+    @user = current_user
   end
 
   def edit

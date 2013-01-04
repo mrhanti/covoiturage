@@ -1,11 +1,21 @@
 Covoiturage::Application.routes.draw do
   
-  resources :users, :only => [:new, :create, :update, :edit] do
+  devise_for :users, :singular => :user
+
+  devise_scope :user do
+    get '/login' => 'devise/sessions#new'
+    get '/logout' => 'devise/sessions#destroy'
+    get '/register' => 'devise/registrations#new'
+  end
+
+  resources :users, :except => [:new, :create, :update, :edit, :index] do
     resources :ads, :only => [:index, :new, :create]
   end
 
+  
+
   post "/search" => "ads#search"
-  # get  "/profile" => "users#edit", :as => "user_profile"
+  get  "/profile" => "users#profile", :as => "user_profile"
   
   # /profile
   # /search

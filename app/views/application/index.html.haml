@@ -1,5 +1,7 @@
 %h1
   Bienvenue sur covoiturage.ma
+.register
+  = link_to 'register', register_path 
 
 = search_form_for @q, :url => search_path, :html => { :method => :post } do |f|
   %h4

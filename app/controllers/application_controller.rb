@@ -5,4 +5,13 @@ class ApplicationController < ActionController::Base
   	@q = Ad.search(params[:q])
   	# @ads = @q.result(:distinct => true)
   end
+
+  private
+  def after_sign_in_path_for(user)
+    root_path
+  end
+  
+  def after_sign_out_path_for(user)
+    root_path
+  end
 end
