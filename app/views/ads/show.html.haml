@@ -1,2 +1,8 @@
 = link_to "User Profile", user_profile_path
+
+- if @ad.belongs_to?(current_user)
+  Here's your confirmation token: 
+  %strong
+    = "#{@ad.confirmation.token}"
+
 = debug @ad

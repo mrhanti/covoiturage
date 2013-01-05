@@ -8,4 +8,15 @@
 
   .flash
     = flash[:notice] unless flash[:notice].blank?
+
+  .devise 
+    - unless user_signed_in? 
+      = link_to 'register', register_path 
+      |
+      = link_to 'sign in', login_path 
+    - else
+      = "Ahlan #{current_user.full_name}"
+      |
+      = link_to 'logout', logout_path
+
   = yield
