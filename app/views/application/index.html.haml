@@ -1,7 +1,16 @@
 %h1
   Bienvenue sur covoiturage.ma
-.register
-  = link_to 'register', register_path 
+
+.devise
+  - unless user_signed_in? 
+    = link_to 'register', register_path 
+    |
+    = link_to 'sign in', login_path 
+  - else
+    = "Ahlan #{current_user.full_name}"
+    |
+    = link_to 'logout', logout_path
+
 
 = search_form_for @q, :url => search_path, :html => { :method => :post } do |f|
   %h4

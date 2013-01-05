@@ -1,6 +1,6 @@
 class AdsController < ApplicationController
-  before_filter :find_user, :only => [:new, :create, :show]
-  before_filter :authenticate_user!, :only => [:new, :create]
+  before_filter :find_user, :only => [:new, :create, :show, :destroy]
+  before_filter :authenticate_user!, :only => [:new, :create, :destroy]
   
   def new
     @ad = Ad.new
@@ -18,7 +18,7 @@ class AdsController < ApplicationController
       flash[:notice] = "couldn't create ad..."
     end
 
-    redirect_to :action => :show
+    redirect_to proc { user_ad_path(@user, @ad) }
   end
 
   def show
@@ -26,7 +26,15 @@ class AdsController < ApplicationController
   end
 
   def destroy
-    # destroy an ad..
+    @ad = @user.ads.find(params[:id]) 
+        
+    if @ad.destroy
+      flash[:notice] = "You're ad was succcessfully destroyed"
+    else
+      flash[:notice] = "You're ad was not destroyed"
+    end
+
+    redirect_to proc { user_profile_path }
   end
 
   def search
