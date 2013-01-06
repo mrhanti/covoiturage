@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :phone_number, :year_of_birth, :gender
   attr_accessible :avatar, :remove_avatar
   attr_accessible :password, :password_confirmation, :remember_me, :current_password
+  attr_accessible :smoking_allowed, :luggage_allowed, :luggage_weight, :music_allowed, :multi_stop, :usual
 
   has_many :ads, :dependent => :destroy 
 
