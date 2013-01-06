@@ -24,6 +24,7 @@ end
 
 group :development, :test do
   gem 'quiet_assets'
+  gem 'letter_opener'
 end
 
 gem 'jquery-rails'
