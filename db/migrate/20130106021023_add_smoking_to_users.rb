@@ -4,9 +4,6 @@ class AddSmokingToUsers < ActiveRecord::Migration
     add_column :users, :luggage_allowed, :boolean, :default => true
     add_column :users, :luggage_weight,  :float,   :default => 5
     add_column :users, :music_allowed,   :boolean, :default => true
-    # add_column :users, :blabla_allowed,  :boolean, :default => true
-    add_column :users, :multi_stop,      :boolean, :default => false
-    add_column :users, :usual,           :boolean, :default => false
   end
 
   def up

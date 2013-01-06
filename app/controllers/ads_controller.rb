@@ -13,6 +13,7 @@ class AdsController < ApplicationController
 
     if @user.save
       flash[:notice] = "ad created successfully for #{@user.full_name}"
+      Mailer.ad_confirmation(@ad).deliver
     else
       @user.reload
       flash[:notice] = "couldn't create ad..."

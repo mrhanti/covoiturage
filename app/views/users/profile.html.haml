@@ -47,42 +47,67 @@
   %div
     = f.submit "Update"
 
-%h1
-  Liste des annonces
+- unless @user.ads.empty?
+  %h1
+    Liste des annonces
 
-%table.table
-  %thead
-    %th="Destination"
-    %th="Departure"
-    %th="Departure on"
-    %th="Departure at"
-    %th="Seat limit"
-    %th="Price per seat"
-    %th="Highway"
-    %th="Actions"
-  - @user.ads.each do |a| 
-    %tbody
-      %td
-        = a.destination
-      %td
-        = a.departure
-      %td
-        = a.departure_on
-      %td
-        = a.departure_at
-      %td
-        = a.seat_limit
-      %td
-        = a.price_per_seat
-      %td
-        = a.highway
-      %td
-        = link_to "show", user_ad_path(@user, a)
-        = link_to "delete", user_ad_path(@user, a), :method => :delete
+  %table.table
+    %thead
+      %th="Destination"
+      %th="Departure"
+      %th="Departure on"
+      %th="Departure at"
+      %th="Seat limit"
+      %th="Price per seat"
+      %th="Highway"
+      %th="Actions"
+    - @user.ads.each do |a| 
+      %tbody
+        %td
+          = a.destination
+        %td
+          = a.departure
+        %td
+          = a.departure_on
+        %td
+          = a.departure_at
+        %td
+          = a.seat_limit
+        %td
+          = a.price_per_seat
+        %td
+          = a.highway
+        %td
+          = link_to "show", user_ad_path(@user, a)
+          = link_to "delete", user_ad_path(@user, a), :method => :delete
+- else
+  %h1
+    Aucune annonce
 
 
 %h1
   Preferences
+  
+= form_for @user do |f| 
 
-%h1
-  Messages
+  .input-group
+    = f.check_box :smoking_allowed
+    = f.label :smoking_allowed
+
+  .input-group
+    = f.check_box :luggage_allowed
+    = f.label :luggage_allowed
+
+  .input-group
+    = f.label :luggage_weight
+    = f.text_field :luggage_weight
+
+  .input-group
+    = f.check_box :music_allowed
+    = f.label :music_allowed
+  
+  %div
+    = f.submit "Update"
+
+/ %h1
+/   Messages

@@ -64,8 +64,6 @@ ActiveRecord::Schema.define(:version => 20130106021023) do
     t.boolean  "luggage_allowed",        :default => true
     t.float    "luggage_weight",         :default => 5.0
     t.boolean  "music_allowed",          :default => true
-    t.boolean  "multi_stop",             :default => false
-    t.boolean  "usual",                  :default => false
   end
 
 end
