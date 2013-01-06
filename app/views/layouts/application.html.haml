@@ -15,8 +15,12 @@
       |
       = link_to 'sign in', login_path 
     - else
-      = "Ahlan #{current_user.full_name}"
+      Ahlan 
+      %strong
+        = "#{current_user.full_name || current_user.email}"
       |
       = link_to 'logout', logout_path
+      |
+      = link_to 'profile', user_profile_path
 
   = yield

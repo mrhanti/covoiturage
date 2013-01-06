@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103211919) do
+ActiveRecord::Schema.define(:version => 20130106021023) do
 
   create_table "ads", :force => true do |t|
     t.string   "destination",                       :null => false
@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(:version => 20130103211919) do
     t.time     "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "smoking_allowed",        :default => false
+    t.boolean  "luggage_allowed",        :default => true
+    t.float    "luggage_weight",         :default => 5.0
+    t.boolean  "music_allowed",          :default => true
+    t.boolean  "multi_stop",             :default => false
+    t.boolean  "usual",                  :default => false
   end
 
 end

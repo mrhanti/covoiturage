@@ -78,8 +78,7 @@
         = a.highway
       %td
         = link_to "show", user_ad_path(@user, a)
-        %a{:href=>"#{user_ad_path(@user, a)}", :'data-confirm'=>"Are you sure?", :'data-method'=>"delete", :rel=>"nofollow"}
-          destroy
+        = link_to "delete", user_ad_path(@user, a), :method => :delete
 
 
 %h1
