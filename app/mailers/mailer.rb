@@ -6,6 +6,6 @@ class Mailer < Devise::Mailer
     @ad = ad
     @user = ad.user
     @token = ad.confirmation.token
-    mail(to: @user.email, subject: "Your ad is confirmed")
+    mail(to: @user.email, subject: "Your ad is confirmed!!")
   end
 end

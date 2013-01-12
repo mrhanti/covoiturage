@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106021023) do
+ActiveRecord::Schema.define(:version => 20130107225620) do
 
   create_table "ads", :force => true do |t|
     t.string   "destination",                       :null => false
@@ -22,9 +22,14 @@ ActiveRecord::Schema.define(:version => 20130106021023) do
     t.float    "price_per_seat",                    :null => false
     t.boolean  "highway",        :default => false
     t.text     "itinerary"
-    t.integer  "user_id"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.boolean  "owner_id",       :default => false
+  end
+
+  create_table "ads_users", :force => true do |t|
+    t.integer "user_id"
+    t.integer "ad_id"
   end
 
   create_table "confirmations", :force => true do |t|

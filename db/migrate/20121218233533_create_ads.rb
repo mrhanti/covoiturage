@@ -16,7 +16,6 @@ class CreateAds < ActiveRecord::Migration
       t.boolean :highway, :default => false
       t.text    :itinerary
 
-      t.references :user
       t.timestamps
     end
   end
