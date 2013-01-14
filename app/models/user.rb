@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :smoking_allowed, :luggage_allowed, :luggage_weight, :music_allowed, :multi_stop, :usual
 
   # Associations
-  has_and_belongs_to_many :ads
+  has_many :ads, :dependent => :destroy
 
   # Validations
   validates :email, :presence => true 

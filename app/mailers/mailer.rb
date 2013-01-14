@@ -2,7 +2,7 @@ class Mailer < Devise::Mailer
   helper :application
   default from: "mr.el.hanti@gmail.com"
 
-  def ad_confirmation(ad)
+  def confirm_ad_creation(ad)
     @ad = ad
     @user = ad.user
     @token = ad.confirmation.token

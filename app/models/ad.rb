@@ -4,20 +4,33 @@ class Ad < ActiveRecord::Base
   attr_accessible :departure, :destination, :departure_on, :departure_at
   attr_accessible :seat_limit, :price_per_seat, :highway, :itinerary
 
+  attr_protected :poolers_ids
+  
   # Associations
-  has_and_belongs_to_many :users
+  belongs_to :user
   has_one :confirmation, :dependent => :destroy
 
   # Validations
-  validates :destination, :departure, :departure_on, :departure_on, :presence => true
+  validates :destination, :departure, :departure_on, :departure_at, :presence => true
   validates :seat_limit, :price_per_seat, :presence => true
 
   # Callbacks
   before_save :generate_confirmation_code
-  after_save :label_owner   
+
+  # Serializer
+  serialize :poolers_ids, Array
 
   def generate_confirmation_code
     self.confirmation = Confirmation.create
+  end
+
+  def subscribe(user)
+    self.poolers_ids.push(user.id)
+  end
+
+  def poolers
+    klass = self.user.class
+    klass.where(id: self.poolers_ids)
   end
 
   def belongs_to?(user)
