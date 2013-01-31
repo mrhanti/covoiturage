@@ -25,6 +25,6 @@ class User < ActiveRecord::Base
   end
 
   def has_avatar?
-  	self.avatar.to_s.match(/assets\/default_avatar\.png/).nil?
+  	self.avatar.to_s.match(/default_avatar\.png/).nil?
   end
 end

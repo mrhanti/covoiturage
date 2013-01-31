@@ -1,5 +1,5 @@
 class Confirmation < ActiveRecord::Base
-  attr_accessible :token, :use_count
+  attr_accessible :token
 
   FRIENDLY_CHARS = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
     
