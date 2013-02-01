@@ -7,4 +7,8 @@
     = "#{@ad.confirmation.token}"
 
 = debug @ad.user
-= debug @ad
+- if user_signed_in? || @ad.belongs_to?(current_user)
+  = debug @ad
+- else
+  Vous devez vous inscrire pour reserver vos places
+  = link_to "Incrivez Vous Maintenant", register_path
