@@ -8,7 +8,9 @@ Covoiturage::Application.routes.draw do
   end
 
   resources :users, :except => [:index, :new, :create, :show, :edit, :delete] do
-    resources :ads, :only => [:new, :create, :show, :destroy]
+    resources :ads, :only => [:new, :create, :show, :destroy] do
+      resources :reservations, :only => [:create]
+    end
   end  
 
   post "/search" => "ads#search"

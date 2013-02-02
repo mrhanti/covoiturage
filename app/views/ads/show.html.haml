@@ -7,8 +7,29 @@
     = "#{@ad.confirmation.token}"
 
 = debug @ad.user
-- if user_signed_in? || @ad.belongs_to?(current_user)
+- if user_signed_in?
   = debug @ad
+
+  - unless @ad.belongs_to?(current_user)
+    %h3
+      Reservez maintenant vos places
+    = form_for [@user, @ad, @reservation] do |f|
+      .input-group
+        = f.hidden_field :pooler_id
+        %input{:type=>"hidden", :name=>"reservation[pooler_id]", :value=>"#{current_user.id}"}
+        = f.label :seats
+        = f.number_field :seats, :value => 1, :in => 1...@ad.seat_limit
+
+      .input-group
+        = f.label :message
+        = f.text_area :message
+
+      .input-group
+        = f.submit "Reservation"
+
 - else
   Vous devez vous inscrire pour reserver vos places
   = link_to "Incrivez Vous Maintenant", register_path
+  ou 
+  = link_to "connectez vous", login_path
+  si vous êtes déjà covoitureur

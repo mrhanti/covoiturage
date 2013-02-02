@@ -24,6 +24,7 @@ class AdsController < ApplicationController
 
   def show
     @ad = @user.ads.find_by_id(params[:id]) unless @ad
+    @reservation = Reservation.new
   end
 
   def destroy

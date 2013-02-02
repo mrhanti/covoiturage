@@ -8,4 +8,13 @@ class Mailer < Devise::Mailer
     @token = ad.confirmation.token
     mail(to: @user.email, subject: "Your ad is confirmed!!")
   end
+
+  def new_reservation(reservation)
+  	@reservation = reservation
+  	@pooler = User.find(reservation.pooler_id)
+  	@ad = reservation.ad
+  	@user = @ad.user
+  	
+  	mail(to: @user.email, subject: "New Reservation!")
+  end
 end
