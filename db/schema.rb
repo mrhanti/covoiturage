@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(:version => 20130201235018) do
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
     t.integer  "user_id"
-    t.text     "poolers_ids"
     t.integer  "seen",           :default => 0
   end
 

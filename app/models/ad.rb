@@ -3,7 +3,6 @@ class Ad < ActiveRecord::Base
   # Attributes Accessibility
   attr_accessible :departure, :destination, :departure_on, :departure_at
   attr_accessible :seat_limit, :price_per_seat, :highway, :itinerary
-  attr_protected :poolers_ids
   
   # Associations
   belongs_to :user
@@ -17,11 +16,6 @@ class Ad < ActiveRecord::Base
   # Callbacks
   before_save :generate_confirmation_code
 
-  # Serializer
-  serialize :poolers_ids, Array
-
-  # seen
-  # 
   def generate_confirmation_code
     self.confirmation = Confirmation.create
   end
